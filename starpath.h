@@ -1,6 +1,7 @@
 #ifndef STARPATH_H
 #define STARPATH_H
 
+#include <list>
 #include <QMainWindow>
 #include<QString>
 #include<QTableWidgetItem>
@@ -24,6 +25,7 @@ public:
     ~StarPath();
      Celula** mapa;
      void set_caracteristicas_mapa(int altura, int largura);
+
      int x_partida, x_chegada, y_chegada, y_partida;
 
 private slots:
@@ -48,6 +50,8 @@ private slots:
    void on_edt_vertical_editingFinished();
 
   void on_actionCome_ar_triggered();
+
+  //void on_list_abertos_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::StarPath *ui;

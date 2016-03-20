@@ -77,14 +77,17 @@ void Busca::marcar_rota(Celula *celula)
     }
     else
     {
-        icon.addFile(QStringLiteral(":/imagens/largada_2.png"), QSize(), QIcon::Normal, QIcon::Off);
-        p->get_item()->setIcon(icon);
+       // icon.addFile(QStringLiteral(":/imagens/imagens/largada_2.png"), QSize(), QIcon::Normal, QIcon::Off);
+       // p->get_item()->setIcon(icon);
         p->get_item()->setBackgroundColor(Qt::green);
     }
 }
 
 void Busca::A_estrela(Celula *partida, Celula* chegada, double peso_horizontal, double peso_vertical, double peso_diagonal){
     priority_queue<Celula*, std::vector<Celula*>, avaliar_custo> fila;
+
+    std::queue<Celula*> lista_de_abertos;
+    std::queue<Celula*> lista_de_fechados;
 
     Celula *aux;
     fila.push(partida);
@@ -98,7 +101,7 @@ void Busca::A_estrela(Celula *partida, Celula* chegada, double peso_horizontal, 
     visitado.addFile(QStringLiteral(":/imagens/imagens/visitado.png"),QSize(), QIcon::Normal, QIcon::Off);
     visto.addFile(QStringLiteral(":/imagens/imagens/visto.png"),QSize(), QIcon::Normal, QIcon::Off);
 
-     aux = fila.top();
+    aux = fila.top();
     while(aux->getTipo()!= CHEGADA)
     {
         aux = fila.top();
@@ -126,16 +129,21 @@ void Busca::A_estrela(Celula *partida, Celula* chegada, double peso_horizontal, 
                 if(aux->vizinhos[i]->getPai() == nullptr
                         || (aux->vizinhos[i]->getPai()!= nullptr
                             && aux->vizinhos[i]->get_g() > g)){
-                   // if(aux->vizinhos[i] != aux->getPai()){
+                    if(aux->vizinhos[i] != aux->getPai()){
+
                         aux->vizinhos[i]->get_item()->setIcon(visto);
                         aux->vizinhos[i]->get_item()->setBackgroundColor(Qt::darkCyan);
                         aux->vizinhos[i]->setPai(aux);
                         aux->vizinhos[i]->set_g(g);
                         aux->vizinhos[i]->set_f(f);
+                        aux->vizinhos[i]->get_item()->setToolTip("f: "+ QString::number(aux->vizinhos[i]->get_f())
+                                                                 +"\ng: "+ QString::number(aux->vizinhos[i]->get_g())
+                                                                 +"\nh: "+ QString::number(aux->vizinhos[i]->get_h()));
                         fila.push(aux->vizinhos[i]);
-                    //}
+
+                    }
                 }
-                aux->vizinhos[i]->get_item()->setToolTip("f: "+ QString::number(aux->get_f())+"\ng: "+ QString::number(aux->get_g())+"\nh: "+ QString::number(aux->get_h()));
+
             }
         }
         if(fila.empty()){

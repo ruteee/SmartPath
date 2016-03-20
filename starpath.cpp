@@ -347,7 +347,8 @@ void StarPath::set_caracteristicas_mapa(int altura, int largura){
             mapa[i][j].setPai(nullptr);
             mapa[i][j].setTipo(LIVRE);
             mapa[i][j].set_g(0);
-            //mapa[i][i].set_f(0);
+            mapa[i][i].set_f(0);
+            mapa[i][i].set_h(0);
 
             if( (j - 1) < 0 && (i -1) < 0){
                 mapa[i][j].vizinhos[0] = nullptr;
@@ -358,7 +359,7 @@ void StarPath::set_caracteristicas_mapa(int altura, int largura){
                 mapa[i][j].vizinhos[5] = nullptr;
                 mapa[i][j].vizinhos[6] = nullptr;
                 mapa[i][j].vizinhos[7] = nullptr;
-            }else if((j+1) > largura && (i-1) < 0){
+            }else if((j+1) > largura - 1 && (i-1) < 0){
 
                 mapa[i][j].vizinhos[0] = nullptr;
                 mapa[i][j].vizinhos[1] = nullptr;
@@ -425,10 +426,10 @@ void StarPath::set_caracteristicas_mapa(int altura, int largura){
 
             }else if((j+1) > (largura -1) && (i+1) > 0){
 
-                mapa[i][j].vizinhos[0] = nullptr;
+                mapa[i][j].vizinhos[0] = &mapa[i-1][j];
                 mapa[i][j].vizinhos[1] = nullptr;
                 mapa[i][j].vizinhos[2] = nullptr;
-                mapa[i][j].vizinhos[3] = &mapa[i+1][j+1];
+                mapa[i][j].vizinhos[3] = nullptr;
                 mapa[i][j].vizinhos[4] = &mapa[i+1][j];
                 mapa[i][j].vizinhos[5] = &mapa[i+1][j-1];
                 mapa[i][j].vizinhos[6] = &mapa[i][j-1];
@@ -448,3 +449,4 @@ void StarPath::set_caracteristicas_mapa(int altura, int largura){
         }
     }
 }
+
