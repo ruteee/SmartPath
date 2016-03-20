@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/imagens">
+        <file>imagens/passada_1.png</file>
+        <file>imagens/chegada_1.png</file>
+        <file>imagens/chegada_2.png</file>
+        <file>imagens/l.png</file>
+        <file>imagens/largada_1.png</file>
+        <file>imagens/largada_2.png</file>
+        <file>imagens/n.png</file>
+        <file>imagens/nd.png</file>
+        <file>imagens/no.png</file>
+        <file>imagens/o.png</file>
+        <file>imagens/obs_1.png</file>
+        <file>imagens/obs_2.png</file>
+        <file>imagens/obs_3.png</file>
+        <file>imagens/obs_4.png</file>
+        <file>imagens/obs_5.png</file>
+        <file>imagens/obs_6.png</file>
+        <file>imagens/obs_7.png</file>
+        <file>imagens/obs_8.png</file>
+        <file>imagens/obs_9.png</file>
+        <file>imagens/s.png</file>
+        <file>imagens/sd.png</file>
+        <file>imagens/shortcut.png</file>
+        <file>imagens/so.png</file>
+        <file>imagens/visitado.png</file>
+        <file>imagens/visto.png</file>
+    </qresource>
+</RCC>
