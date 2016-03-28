@@ -77,8 +77,8 @@ void Busca::marcar_rota(Celula *celula)
     }
     else
     {
-       // icon.addFile(QStringLiteral(":/imagens/imagens/largada_2.png"), QSize(), QIcon::Normal, QIcon::Off);
-       // p->get_item()->setIcon(icon);
+        icon.addFile(QStringLiteral(":/imagens/imagens/passada_1.png"), QSize(), QIcon::Normal, QIcon::Off);
+        p->get_item()->setIcon(icon);
         p->get_item()->setBackgroundColor(Qt::green);
     }
 }
